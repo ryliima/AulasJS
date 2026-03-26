@@ -71,4 +71,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     disponibilidade });
             }
         }
+
+        //salvar produtos no localStorage
+        function editarProduto(index) {
+            editarProduto = true;
+            const produtos = getProdutos();
+            const produto = produtos[index];
+
+            document.getElementById('produtoNome').value = produto.nome;
+            document.getElementById('produtoPreco').value = produto.preco;
+            document.getElementById('produtoDisponibilidade').value = 
+                produto.disponibilidade;
+            produtoIdElement.value = index;
+        }
+
+        //função para excluir produto
+        function excluirProduto(index) {
+            const produtos = getProdutos();
+            produtos.splice(index, 1);
+            salvarProduto(produtos);
+            exibirProdutos();
+        }
+    
+        cancelarBtn.style.display = 'inline-block';
     });
